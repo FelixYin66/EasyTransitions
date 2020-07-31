@@ -7,6 +7,11 @@
 
 import Foundation
 
+/*
+ 
+ 转场动画不同形式：present，dismiss
+ 
+ */
 public enum ModalOperation: Int {
     case present
     case dismiss

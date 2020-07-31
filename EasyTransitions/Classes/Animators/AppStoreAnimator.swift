@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//仿苹果商店 转场动画
 public class AppStoreAnimator: ModalTransitionAnimator {
     
     public var initialFrame: CGRect

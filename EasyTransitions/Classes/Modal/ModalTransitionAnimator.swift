@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+/*
+ 
+ 动画具体信息及过程都是通过ModalTransitionAnimator 来提供
+ 
+ */
 public protocol ModalTransitionAnimator {
     var duration: TimeInterval { get }
     var auxAnimation: ((Bool) -> Void)? { get set }

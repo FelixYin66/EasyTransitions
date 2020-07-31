@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+/*
+ 
+ 实现UIViewControllerTransitioningDelegate 协议，转场动画的第一步
+ 
+ */
 open class ModalTransitionDelegate: NSObject {
 
     private var animators = [ModalOperation: ModalTransitionAnimator]()
@@ -23,10 +28,12 @@ open class ModalTransitionDelegate: NSObject {
         interactiveController.shouldBeginTransition = beginWhen
     }
 
+    //按照key保存Animator
     open func set(animator: ModalTransitionAnimator, for operation: ModalOperation) {
         animators[operation] = animator
     }
     
+    //移除Animator
     open func removeAnimator(for operation: ModalOperation) {
         animators.removeValue(forKey: operation)
     }
@@ -35,6 +42,7 @@ open class ModalTransitionDelegate: NSObject {
         self.presentationController = presentationController
     }
     
+    //配置present 与 dismiss情况下动画 ModalTransitionConfigurator 实现协议UIViewControllerAnimatedTransitioning
     private func configurator(for operation: ModalOperation) -> ModalTransitionConfigurator? {
         guard let animator = animators[operation] else {
             return nil
@@ -43,6 +51,7 @@ open class ModalTransitionDelegate: NSObject {
     }
 }
 
+//实现UIViewControllerTransitioningDelegate 代理
 extension ModalTransitionDelegate: UIViewControllerTransitioningDelegate {
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return configurator(for: .present)
@@ -52,6 +61,7 @@ extension ModalTransitionDelegate: UIViewControllerTransitioningDelegate {
         return configurator(for: .dismiss)
     }
     
+    //交互式动画
     open func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveController.interactionInProgress ? interactiveController : nil
     }

@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ 
+ 动画实现UIViewControllerAnimatedTransitioning 协议
+ 
+ */
+
 @available(iOS 10.0, *)
 internal final class ModalTransitionConfigurator: NSObject, UIViewControllerAnimatedTransitioning {
 
@@ -16,6 +22,7 @@ internal final class ModalTransitionConfigurator: NSObject, UIViewControllerAnim
         self.transitionAnimator = transitionAnimator
     }
     
+    //动画时长
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return transitionAnimator.duration
     }
@@ -49,6 +56,7 @@ internal final class ModalTransitionConfigurator: NSObject, UIViewControllerAnim
                                             modalView: modalView, in: containerView)
         }
 
+        //动画结束
         animator.addCompletion { position in
             switch position {
             case .end:
@@ -70,6 +78,7 @@ internal final class ModalTransitionConfigurator: NSObject, UIViewControllerAnim
         return animator
     }
     
+    //动画中断
     public func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         return transitionAnimator(using: transitionContext)
     }

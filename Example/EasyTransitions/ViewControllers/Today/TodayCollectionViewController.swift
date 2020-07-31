@@ -48,11 +48,13 @@ class TodayCollectionViewController: UICollectionViewController {
     func recalculateItemSizes(givenWidth width: CGFloat) {
         let vcWidth = width - 20//20 is left margin
         var width: CGFloat = 355 //335 is ideal size + 20 of right margin for each item
+        //
         let colums = round(vcWidth / width) //Aproximate times the ideal size fits the screen
         width = (vcWidth / colums) - 20 //we substract the right marging
         (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: width, height: 412)
     }
 
+    //This method is called when the view controller's view's size is changed by its parent (i.e. for the root view controller when its window rotates or is resized 也就是说 window发生旋转后 根控制器大小发生变化或者大小发生变化时 ). 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         recalculateItemSizes(givenWidth: size.width)

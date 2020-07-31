@@ -7,6 +7,11 @@
 
 import UIKit
 
+/*
+ 
+ 实现交互式动画类
+ 
+ */
 open class TransitionInteractiveController: UIPercentDrivenInteractiveTransition {
 
     // MARK: - Private

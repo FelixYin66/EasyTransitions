@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//通过底部弹出ViewController 动画实现
 open class PresentationControllerAnimator: ModalTransitionAnimator {
 
     private var finalFrame: CGRect
