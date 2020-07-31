@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class AppStoreAnimator: ModalTransitionAnimator {
+open public class AppStoreAnimator: ModalTransitionAnimator {
     
     public var initialFrame: CGRect
     private var edgeLayoutConstraints: NSEdgeLayoutConstraints?
