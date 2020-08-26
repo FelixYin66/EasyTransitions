@@ -14,7 +14,7 @@ import UIKit
  */
 
 @available(iOS 10.0, *)
-internal final class ModalTransitionConfigurator: NSObject, UIViewControllerAnimatedTransitioning {
+final class ModalTransitionConfigurator: NSObject, UIViewControllerAnimatedTransitioning {
 
     private let transitionAnimator: ModalTransitionAnimator
 
